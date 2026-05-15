@@ -8,6 +8,7 @@ import { PiAirplaneTakeoff, PiCalendarDuotone } from "react-icons/pi";
 import { FaStar } from "react-icons/fa";
 import { EditModal } from "@/components/EditModal";
 import DeleteDestinaiton from "@/components/DeleteDestinaiton";
+import BookingCard from "@/components/BookingCard";
 
 const DestinationsDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -33,7 +34,7 @@ const DestinationsDetailsPage = async ({ params }) => {
   } = destination;
 
   return (
-    <div className="min-h-screen bg-white font-outfit pt-24 pb-20">
+    <div className="min-h-screen bg-white font-outfit pt-34 pb-20">
       <div className="max-w-11/12 mx-auto px-4 lg:px-6">
         {/* Top Navigation & Action Bar */}
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
@@ -135,51 +136,7 @@ const DestinationsDetailsPage = async ({ params }) => {
           </div>
 
           {/* Right Column: Booking Sidebar */}
-          <div className="relative">
-            <div className="lg:sticky lg:top-32 bg-white border-none p-10 shadow-[0_10px_20px_rgba(0,0,0,0.2)]">
-              <div className="mb-10">
-                <p className="text-zinc-400 font-medium text-lg mb-2">
-                  Starting from
-                </p>
-                <h2 className="text-5xl font-bold text-cyan-500">${price}</h2>
-                <span className="text-zinc-400 font-medium text-lg">
-                  per person
-                </span>
-              </div>
-
-              <div className="space-y-6">
-                <div className="mt-6 mb-10">
-                  <input
-                    type="text"
-                    defaultValue={departureDate}
-                    className="w-full px-5 py-4 bg-gray-100 border border-zinc-100 text-zinc-600 focus:outline-none focus:border-cyan-500 transition-colors font-medium"
-                  />
-                </div>
-
-                <button className="w-full bg-cyan-500 text-white py-5 font-bold uppercase tracking-widest text-sm flex items-center justify-center gap-2 hover:bg-cyan-600 transition-all group">
-                  Book Now
-                  <span className="group-hover:translate-x-1 transition-transform">
-                    →
-                  </span>
-                </button>
-
-                <div className="pt-6 space-y-3">
-                  {[
-                    "Free cancellation up to 7 days",
-                    "Travel insurance included",
-                    "24/7 customer support",
-                  ].map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-3">
-                      <HiCheck className="text-green-600 text-lg" />
-                      <span className="text-lg text-gray-400 font-medium">
-                        {feature}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+          <BookingCard destination={destination} />
         </div>
       </div>
     </div>

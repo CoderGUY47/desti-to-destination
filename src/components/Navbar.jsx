@@ -11,15 +11,8 @@ import {useRouter} from 'next/navigation';
 
 const Navbar = () => {
   const router = useRouter();
-  const {
-    data: session,
-    isPending,
-    error,
-    refetch
-  } = authClient.useSession();
-
+  const { data: session, refetch } = authClient.useSession();
   const user = session?.user;
-  console.log(user);
 
   const handleSignOut = async () => {
     try {
@@ -35,7 +28,7 @@ const Navbar = () => {
 
   return (
     <>
-    <div className="fixed m-3 bg-black/30 backdrop-blur-md w-[98.5%] z-50">
+    <div className="fixed m-3 bg-black/80 backdrop-blur-md shadow-lg w-[98.5%] z-50">
     <nav className="  w-full shadow-sm h-20 flex items-center">
       <div className="grid grid-cols-3 items-center w-full mx-auto px-4 md:px-8">
         {/* Left Side: Navigation Links */}

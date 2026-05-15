@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
         <ToastContainer 
           theme="dark"
           toastClassName="!bg-black/50 !rounded-none !backdrop-blur-xl !border !border-white/10 !shadow-2xl"
-          position="top-right"
+          position="top-center"
           pauseOnHover
         />
       </body>
