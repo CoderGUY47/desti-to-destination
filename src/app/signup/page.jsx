@@ -15,7 +15,7 @@ import { toast } from "react-toastify";
 import { redirect, useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 
-const SignUp = () => {
+const SignUpPage = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -39,14 +39,24 @@ const SignUp = () => {
       return;
     }
   };
+
+
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    }); 
+  };
+
+
   return (
-    <div className="min-h-screen flex flex-col items-center pt-32 pb-12 bg-[#fafafa] px-4">
+    <div className="min-h-screen flex flex-col items-center pt-40 pb-24 bg-black/80 px-4">
       {/* Header */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-serif text-gray-900 tracking-tight">
+        <h1 className="text-4xl font-semibold text-white tracking-tight">
           Create Account
         </h1>
-        <p className="text-gray-500 mt-2 text-sm sm:text-base">
+        <p className="text-white/60 mt-2 text-lg">
           Start your journey with Desti To Destination
         </p>
       </div>
@@ -151,13 +161,15 @@ const SignUp = () => {
           </div>
 
           {/* Google Button */}
-          <button
+          <Button
+            onClick={handleGoogleSignIn}
             type="button"
+            variant="ghost"
             className="w-full flex items-center justify-center gap-2 bg-white border border-gray-200 hover:bg-gray-50 text-gray-800 font-semibold text-sm py-2.5 rounded-none transition-colors"
           >
             <FcGoogle className="text-xl" />
-            Sign Up With Google
-          </button>
+            Sign In With Google
+          </Button>
         </Form>
 
         {/* Footer */}
@@ -175,4 +187,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUpPage;

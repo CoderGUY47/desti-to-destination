@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
         <Footer />
         <ToastContainer 
           theme="dark"
-          toastClassName="!bg-black/50 !backdrop-blur-xl !border !border-white/10 !rounded-xl !shadow-2xl"
+          toastClassName="!bg-black/50 !rounded-none !backdrop-blur-xl !border !border-white/10 !shadow-2xl"
           position="top-right"
           pauseOnHover
         />
